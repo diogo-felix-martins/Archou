@@ -1,17 +1,26 @@
+####################################################
+################# GENERAL SETTINGS #################
+####################################################
+### Enable autologin
+sudo mkdir /etc/sddm.conf.d
+sudo touch /etc/sddm.conf.d/autologin.conf
+sudo bash -c 'sudo echo "[Autologin]" >> /etc/sddm.conf.d/autologin.conf'
+sudo bash -c 'sudo echo "User=diogom" >> /etc/sddm.conf.d/autologin.conf'
+sudo bash -c 'sudo echo "Session=plasma" >> /etc/sddm.conf.d/autologin.conf'
+## Auto unlock KDE Wallet
+sudo pacman -S --noconfirm kwallet-pam
+
 # Keyboard layout
 localectl set-keymap --no-convert pt-latin1
 cp /etc/X11/xinit/xinitrc .xinitrc # Check if this does anything
 sudo echo setxkbmap -layout pt >> /etc/X11/xinit/xinitrc # Check if this does anything
 sed -i 's/\"us\"/\"pt\"/g' /etc/X11/xorg.conf.d/00-keyboard.conf
 
-# Enable pacman multilib
+### KDE Theme
+sudo pacman -S --noconfirm papirus-# Enable pacman multilib
 sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 
-sudo pacman -Syyu --noconfirm
-
-
-### KDE Theme
-sudo pacman -S --noconfirm papirus-icon-theme
+sudo pacman -Syyu --noconfirmicon-theme
 sudo pacman -S --noconfirm materia-kde kvantum-theme-materia
 lookandfeeltool -a com.github.varlesh.materia-dark
 
@@ -40,7 +49,7 @@ cp configs/terminal/MateriaDark.colorscheme ~/.local/share/konsole
 cp configs/terminal/zsh.profile ~/.local/share/konsole
 cp configs/terminal/.zshrc ~/
 
-sudo pacman -S --noconfirm nvidia nvidia-utils discord ttf-liberation wqy-zenhei ntfs-3g
+sudo pacman -S --noconfirm nvidia nvidia-utils nvidia-settings discord ttf-liberation wqy-zenhei ntfs-3g
 
 ####################################################
 ####################### YAY ########################
@@ -55,14 +64,16 @@ sudo rm -R yay-git
 ### General packages ###############################
 yay -S --noconfirm runelite google-chrome
 
-
 ### Steam ##########################################
+## Enable pacman multilib
+sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
+sudo pacman -Syyu --noconfirm
+
 yay -S --noconfirm lib32-fontconfig
 sudo pacman -S --noconfirm lib32-nvidia-utils
 sudo pacman -S --noconfirm steam
 
-# Add applications to startup
-# Add to startup ###################################
+### Add applications to startup ####################
 mkdir ~/.config/autostart
 cp /usr/share/applications/org.kde.yakuake.desktop ~/.config/autostart
 cp /usr/share/applications/discord.desktop ~/.config/autostart

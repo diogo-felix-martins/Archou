@@ -31,6 +31,8 @@ git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 # # Copy config files
 cp configs/terminal/agnoster.zsh-theme ~/.oh-my-zsh/themes
+cp configs/terminal/MateriaDark.colorscheme ~/.local/share/konsole
+cp configs/terminal/zsh.profile ~/.local/share/konsole
 cp configs/terminal/.zshrc ~/
 
 sudo pacman -S --noconfirm nvidia nvidia-utils discord zsh

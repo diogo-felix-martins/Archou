@@ -1,0 +1,11 @@
+[Appearance]
+Skin=materia-dark
+
+[Desktop Entry]
+DefaultProfile=zsh.profile
+
+[Dialogs]
+FirstRun=false
+
+[Window]
+KeepOpen=false

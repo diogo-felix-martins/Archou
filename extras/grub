@@ -1,0 +1,6 @@
+GRUB_DEFAULT=saved
+GRUB_TIMEOUT=0
+GRUB_CMDLINE_LINUX_DEFAULT="udev.log_priority=3 nordrand loglevel=3"
+
+GRUB_TIMEOUT_STYLE=hidden
+GRUB_FORCE_HIDDEN_MENU="true"

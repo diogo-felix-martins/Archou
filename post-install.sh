@@ -1,4 +1,7 @@
-sudo pacman -Syu --noconfirm
+# Enable pacman multilib
+sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
+
+sudo pacman -Syyu --noconfirm
 
 localectl set-keymap --no-convert pt-latin1
 
@@ -13,7 +16,7 @@ lookandfeeltool -a com.github.varlesh.materia-dark
 ####################################################
 
 ### Yakuake ########################################
-sudo pacman -S --noconfirm yakuake
+sudo pacman -S --noconfirm yakuake zsh
 ## Configs #########################################
 # Add to startup ###################################
 mkdir ~/.config/autostart
@@ -35,7 +38,7 @@ cp configs/terminal/MateriaDark.colorscheme ~/.local/share/konsole
 cp configs/terminal/zsh.profile ~/.local/share/konsole
 cp configs/terminal/.zshrc ~/
 
-sudo pacman -S --noconfirm nvidia nvidia-utils discord zsh
+sudo pacman -S --noconfirm nvidia nvidia-utils discord ttf-liberation wqy-zenhei ntfs-3g
 
 ####################################################
 ####################### YAY ########################
@@ -47,4 +50,12 @@ cd yay-git
 makepkg --noconfirm -si
 sudo rm -R yay-git
 
-yay -S --noconfirm google-chrome
+### General packages ###############################
+yay -S --noconfirm runelite google-chrome
+
+
+### Steam ##########################################
+yay -S --noconfirm lib32-fontconfig
+sudo pacman -S --noconfirm lib32-nvidia-utils
+sudo pacman -S --noconfirm steam
+

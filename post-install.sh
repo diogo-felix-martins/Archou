@@ -1,9 +1,14 @@
+# Keyboard layout
+localectl set-keymap --no-convert pt-latin1
+cp /etc/X11/xinit/xinitrc .xinitrc # Check if this does anything
+sudo echo setxkbmap -layout pt >> /etc/X11/xinit/xinitrc # Check if this does anything
+sed -i 's/\"us\"/\"pt\"/g' /etc/X11/xorg.conf.d/00-keyboard.conf
+
 # Enable pacman multilib
 sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 
 sudo pacman -Syyu --noconfirm
 
-localectl set-keymap --no-convert pt-latin1
 
 ### KDE Theme
 sudo pacman -S --noconfirm papirus-icon-theme
@@ -18,9 +23,6 @@ lookandfeeltool -a com.github.varlesh.materia-dark
 ### Yakuake ########################################
 sudo pacman -S --noconfirm yakuake zsh
 ## Configs #########################################
-# Add to startup ###################################
-mkdir ~/.config/autostart
-cp /usr/share/applications/org.kde.yakuake.desktop ~/.config/autostart
 # Copy config file
 cp configs/terminal/yakuakerc ~/.config
 
@@ -59,3 +61,9 @@ yay -S --noconfirm lib32-fontconfig
 sudo pacman -S --noconfirm lib32-nvidia-utils
 sudo pacman -S --noconfirm steam
 
+# Add applications to startup
+# Add to startup ###################################
+mkdir ~/.config/autostart
+cp /usr/share/applications/org.kde.yakuake.desktop ~/.config/autostart
+cp /usr/share/applications/discord.desktop ~/.config/autostart
+cp /usr/share/applications/steam.desktop ~/.config/autostart

@@ -27,7 +27,7 @@ sudo bash -c 'sudo echo "\n[Mouse]" >> ~/.config/kcminputrc'
 sudo bash -c 'sudo echo "XLbInptAccelProfileFlat=true" >> ~/.config/kcminputrc'
 
 ### Disable single click opens files/folders #######
-sed -i "s/[KDE]/[KDE]\nSingleClick=false/" ~/.config/kdeglobals
+sed -i 's/\[KDE\]/\[KDE\]\\\nSingleClick=false/g' ~/.config/kdeglobals
 
 
 ####################################################

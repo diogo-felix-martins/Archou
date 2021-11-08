@@ -9,21 +9,33 @@ sudo bash -c 'sudo echo "[Autologin]" >> /etc/sddm.conf.d/autologin.conf'
 sudo bash -c 'sudo echo "User=diogom" >> /etc/sddm.conf.d/autologin.conf'
 sudo bash -c 'sudo echo "Session=plasma" >> /etc/sddm.conf.d/autologin.conf'
 
-## Disable KDE Wallet ##############################
-sudo touch ~/.config/kwalletrc # TODO: test if file needs to be created on fresh install
+### Disable KDE Wallet #############################
+sudo rm -R ~/.config/kwalletrc
+sudo touch ~/.config/kwalletrc
 sudo bash -c 'sudo echo "[Wallet]" >> ~/.config/kwalletrc'
 sudo bash -c 'sudo echo "Enabled=false" >> ~/.config/kwalletrc'
 
-# Keyboard layout #################################
+### Keyboard layout ################################
 localectl set-keymap --no-convert pt-latin1
 cp /etc/X11/xinit/xinitrc .xinitrc # Check if this does anything
 sudo echo setxkbmap -layout pt >> /etc/X11/xinit/xinitrc # Check if this does anything
 sed -i 's/\"us\"/\"pt\"/g' /etc/X11/xorg.conf.d/00-keyboard.conf
 
+### Disable mouse acceleration #####################
+sudo bash -c 'sudo echo "" >> ~/.config/kcminputrc'
+sudo bash -c 'sudo echo "\n[Mouse]" >> ~/.config/kcminputrc'
+sudo bash -c 'sudo echo "XLbInptAccelProfileFlat=true" >> ~/.config/kcminputrc'
+
+### Disable single click opens files/folders #######
+sed -i "s/[KDE]/[KDE]\nSingleClick=false/" ~/.config/kdeglobals
+
 
 ####################################################
 ##################### PACKAGES #####################
 ####################################################
+
+### Copy Dolphin config file #######################
+cp configs/dolphinrc ~/.config
 
 ### Yakuake installation + configuration ###########
 sh ./yakuake.sh
@@ -66,3 +78,9 @@ cp /usr/share/applications/org.kde.yakuake.desktop ~/.config/autostart
 cp /usr/share/applications/discord.desktop ~/.config/autostart
 cp /usr/share/applications/steam.desktop ~/.config/autostart
 sed -i 's/Exec=\/usr\/bin\/steam-runtime %U/Exec=\/usr\/bin\/steam-runtime -silent %U/g' ~/.config/autostart/steam.desktop
+
+####################################################
+####################### KDE ########################
+####################################################
+sh ./kde.sh
+

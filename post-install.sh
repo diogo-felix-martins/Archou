@@ -23,7 +23,7 @@ sed -i 's/\"us\"/\"pt\"/g' /etc/X11/xorg.conf.d/00-keyboard.conf
 
 ### Disable mouse acceleration #####################
 sudo bash -c 'sudo echo "" >> ~/.config/kcminputrc'
-sudo bash -c 'sudo echo "\n[Mouse]" >> ~/.config/kcminputrc'
+sudo bash -c 'sudo echo "[Mouse]" >> ~/.config/kcminputrc'
 sudo bash -c 'sudo echo "XLbInptAccelProfileFlat=true" >> ~/.config/kcminputrc'
 
 ### Disable single click opens files/folders #######

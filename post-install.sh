@@ -59,6 +59,10 @@ sudo rm -R yay-git
 ### General packages ###############################
 yay -S --noconfirm runelite google-chrome
 
+### Disable kdewallet in chrome ####################
+sudo sed -i 's/Exec=\/usr\/bin\/google-chrome-stable %U/Exec=\/usr\/bin\/google-chrome-stable --password-store=basic %U/g' /usr/share/applications/google-chrome.desktop
+
+
 ### Steam ##########################################
 ## Enable pacman multilib
 sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf

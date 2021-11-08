@@ -111,3 +111,4 @@ source $ZSH/oh-my-zsh.sh
 ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=cyan,underline
 ZSH_HIGHLIGHT_STYLES[precommand]=fg=cyan,underline
 ZSH_HIGHLIGHT_STYLES[arg0]=fg=cyan
+ZSH_HIGHLIGHT_STYLES[autodirectory]=fg=cyan,underline

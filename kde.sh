@@ -12,3 +12,6 @@ cp wallpapers/* ~/Pictures/Wallpapers
 
 ## Select rancom wallpaper #########################
 sh ./change-wallpaper.sh
+
+## Copy Window Rules ###############################
+cp configs/kwinrulesrc ~/.config

@@ -8,4 +8,5 @@ sudo pacman -S --noconfirm spectacle
 cp configs/spectaclerc ~/.config
 
 # Set PRINT SCREEN key to rectangular area #########
-sed -i 's/.*RectangularRegionScreenShot.*/RectangularRegionScreenShot=Print\\tMeta+Shift+Print,Meta+Shift+Print,Capture Rectangular Region/' ~/.config/kglobalshortcutsrc
+kwriteconfig5 --file ~/.config/kglobalshortcutsrc --group org.kde.spectacle.desktop --key RectangularRegionScreenShot "Print,Meta+Shift+Print,Capture Rectangular Region"
+kwriteconfig5 --file ~/.config/kglobalshortcutsrc --group org.kde.spectacle.desktop --key _launch "Launch Spectacle"

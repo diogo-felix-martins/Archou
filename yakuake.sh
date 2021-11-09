@@ -12,10 +12,7 @@ sudo pacman -S --noconfirm materia-kde kvantum-theme-materia
 cp configs/terminal/yakuakerc ~/.config
 
 # Set Alt+T keyboard shortcut ######################
-sudo bash -c 'sudo echo "" >> ~/.config/kglobalshortcutsrc'
-sudo bash -c 'sudo echo "[yakuake]" >> ~/.config/kglobalshortcutsrc'
-sudo bash -c 'sudo echo "toggle-window-state=Alt+T\tF12,F12,Open/Retract Yakuake" >> ~/.config/kglobalshortcutsrc'
-
+kwriteconfig5 --file ~/.config/kglobalshortcutsrc --group yakuake --key toggle-window-state "Alt+T,F12,Open/Retract Yakuake"
 
 ## zsh #############################################
 # Install configurations manager ###################

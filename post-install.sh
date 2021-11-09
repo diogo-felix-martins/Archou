@@ -1,35 +1,10 @@
 #!/bin/sh
-####################################################
-################# GENERAL SETTINGS #################
-####################################################
-
-### Enable autologin ###############################
-sudo mkdir /etc/sddm.conf.d
-sudo touch /etc/sddm.conf.d/autologin.conf
-sudo bash -c 'sudo echo "[Autologin]" >> /etc/sddm.conf.d/autologin.conf'
-sudo bash -c 'sudo echo "User=diogom" >> /etc/sddm.conf.d/autologin.conf'
-sudo bash -c 'sudo echo "Session=plasma" >> /etc/sddm.conf.d/autologin.conf'
-
-### Disable KDE Wallet #############################
-sudo rm -R ~/.config/kwalletrc
-sudo touch ~/.config/kwalletrc
-sudo bash -c 'sudo echo "[Wallet]" >> ~/.config/kwalletrc'
-sudo bash -c 'sudo echo "Enabled=false" >> ~/.config/kwalletrc'
-
 ### Keyboard layout ################################
+# TODO: Validate which instruction works
 localectl set-keymap --no-convert pt-latin1
 cp /etc/X11/xinit/xinitrc .xinitrc # Check if this does anything
 sudo echo setxkbmap -layout pt >> /etc/X11/xinit/xinitrc # Check if this does anything
 sed -i 's/\"us\"/\"pt\"/g' /etc/X11/xorg.conf.d/00-keyboard.conf
-
-### Disable mouse acceleration #####################
-sudo bash -c 'sudo echo "" >> ~/.config/kcminputrc'
-sudo bash -c 'sudo echo "[Mouse]" >> ~/.config/kcminputrc'
-sudo bash -c 'sudo echo "XLbInptAccelProfileFlat=true" >> ~/.config/kcminputrc'
-
-### Disable single click opens files/folders #######
-sed -i 's/\[KDE\]/\[KDE\]\\\nSingleClick=false/g' ~/.config/kdeglobals
-
 
 ####################################################
 ##################### PACKAGES #####################
@@ -66,7 +41,7 @@ sudo sed -i 's/Exec=\/usr\/bin\/google-chrome-stable %U/Exec=\/usr\/bin\/google-
 
 ### Steam ##########################################
 ## Enable pacman multilib
-sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
+sudo kwriteconfig5 --file /etc/pacman.conf --group multilib --key Include "/etc/pacman.d/mirrorlist"
 sudo pacman -Syyu --noconfirm
 yay -S --noconfirm lib32-fontconfig
 sudo pacman -S --noconfirm lib32-nvidia-utils ttf-liberation wqy-zenhei

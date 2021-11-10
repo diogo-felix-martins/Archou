@@ -30,6 +30,10 @@ sudo touch /etc/sddm.conf.d/autologin.conf
 sudo kwriteconfig5 --file /etc/sddm.conf.d/autologin.conf --group Autologin --key User diogom
 sudo kwriteconfig5 --file /etc/sddm.conf.d/autologin.conf --group Autologin --key Session plasma
 
+### Disable 5min logout timer ######################
+kwriteconfig5 --file ~/.config/kcminputrc --group Daemon --key Autolock false
+kwriteconfig5 --file ~/.config/kcminputrc --group Daemon --key LockOnResume false
+
 ### Disable KDE Wallet #############################
 kwriteconfig5 --file ~/.config/kcminputrc --group Wallet --key Enabled false
 

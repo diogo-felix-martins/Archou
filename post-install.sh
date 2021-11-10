@@ -36,8 +36,7 @@ sudo rm -R yay-git
 yay -S --noconfirm runelite google-chrome
 
 ### Disable kdewallet in chrome ####################
-sudo sed -i 's/Exec=\/usr\/bin\/google-chrome-stable %U/Exec=\/usr\/bin\/google-chrome-stable --password-store=basic %U/g' /usr/share/applications/google-chrome.desktop
-
+sudo kwriteconfig5 --file /usr/share/applications/google-chrome.desktop --group "Desktop Entry" --key Exec "/usr/bin/google-chrome-stable --password-store=basic %U2"
 
 ### Steam ##########################################
 ## Enable pacman multilib
@@ -57,7 +56,7 @@ mkdir ~/.config/autostart
 cp /usr/share/applications/org.kde.yakuake.desktop ~/.config/autostart
 cp /usr/share/applications/discord.desktop ~/.config/autostart
 cp /usr/share/applications/steam.desktop ~/.config/autostart
-sed -i 's/Exec=\/usr\/bin\/steam-runtime %U/Exec=\/usr\/bin\/steam-runtime -silent %U/g' ~/.config/autostart/steam.desktop
+kwriteconfig5 --file ~/.config/autostart/steam.desktop --group "Desktop Entry" --key Exec "/usr/bin/steam-runtime %U -silent"
 
 ####################################################
 ####################### KDE ########################

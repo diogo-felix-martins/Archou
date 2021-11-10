@@ -73,3 +73,6 @@ kwriteconfig5 --file ~/.config/kwinrc --group org.kde.kdecoration2 --key Buttons
 ### Change compositor to OpenGL 3.1 ################
 kwriteconfig5 --file ~/.config/kwinrc --group Compositing --key GLCore true
 kwriteconfig5 --file ~/.config/kwinrc --group Compositing --key OpenGLIsUnsafe false
+
+### Hide maxized window title bar ##################
+kwriteconfig5 --file ~/.config/kwinrc --group Windows --key BorderlessMaximizedWindows true

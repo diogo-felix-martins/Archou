@@ -2,7 +2,7 @@
 ####################################################
 #################### KDE THEME #####################
 ####################################################
-sudo pacman -S --noconfirm papirus-icon-theme materia-kde kvantum-theme-materia plasma5-applets-window-buttons
+sudo pacman -S --noconfirm papirus-icon-theme materia-kde kvantum-theme-materia plasma5-applets-window-buttons ksysguard
 lookandfeeltool -a com.github.varlesh.materia-dark
 
 ### Install systemloadviewer #######################
@@ -12,6 +12,9 @@ chmod u+x install.sh
 ./install.sh
 cd ..
 sudo rm -R kdeplasma-addons
+
+### Install Menu 11 ################################
+git clone https://github.com/prateekmedia/Menu11.git ~/.local/share/plasma/plasmoids/menu11;
 
 ### Wallpapers #####################################
 ## Copy wallpapers to Pictures #####################

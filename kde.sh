@@ -2,8 +2,16 @@
 ####################################################
 #################### KDE THEME #####################
 ####################################################
-sudo pacman -S --noconfirm papirus-icon-theme materia-kde kvantum-theme-materia
+sudo pacman -S --noconfirm papirus-icon-theme materia-kde kvantum-theme-materia plasma5-applets-window-buttons
 lookandfeeltool -a com.github.varlesh.materia-dark
+
+### Install systemloadviewer #######################
+git clone --branch main --single-branch https://gitlab.com/hkanjal/kdeplasma-addons.git
+cd kdeplasma-addons
+chmod u+x install.sh
+./install.sh
+cd ..
+sudo rm -R kdeplasma-addons
 
 ### Wallpapers #####################################
 ## Copy wallpapers to Pictures #####################
